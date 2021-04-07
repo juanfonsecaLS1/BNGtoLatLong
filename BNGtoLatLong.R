@@ -23,8 +23,8 @@ BNGtoLongLat<-function(x){
   Northing)
   line<-xml2::read_html(path)%>%
   rvest::html_text()
-  Long<-str_extract(line,"(?<=\"Longitude\":).+(?=,\"NORTHING)")
-  Lat<-str_extract(line,"(?<=\"Latitude\":).+(?=\\})")
+  Long<-str_extract(line,"(?<=\"(Longitude|LONGITUDE)\":).+(?=,\"NORTHING)")
+  Lat<-str_extract(line,"(?<=\"(Latitude|LATITUDE)\":).+(?=\\})")
 
  y<-data.frame(original = x,
                 new = paste(Lat,Long,sep = ", "))
